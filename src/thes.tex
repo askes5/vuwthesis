@@ -1,0 +1,114 @@
+%package options,
+%font size
+%   10pt,
+%   11pt
+
+%page type,
+%   oneside,
+%   twoside
+
+%font,
+%   stix,
+%   libertinus,
+%   newcomputermodern (the default)
+
+%to specify degree:
+%     phd,
+%     mscwithhonours,
+%     mscthesisonly,
+%     mscbothparts,
+%     otherdegree=<Value>
+
+\documentclass[11pt, twoside, mscthesisonly]{vuwthesis}
+
+%-----------------Packages-------------------------
+
+\usepackage{amsthm} % for defining theorems and proofs
+
+\usepackage{xfrac} %nice fractions use \sfrac{<1>}{<2>}
+
+\usepackage[%backref=true,
+%            style=trad-abbrv,
+            style=ieee,
+            url=false,doi=false,isbn=false,eprint=false,
+            maxcitenames=3,
+%            sorting=nyt,
+%            sortcites=true
+            ]{biblatex}
+\setlength\bibitemsep{0.5\baselineskip}
+\addbibresource{bibliography.bib}
+
+%requies lualatex
+%\usepackage{luanamedtheorem}
+
+
+%----------------xfrac setup----------------------------------------
+%this is a patch for xfrac as the fonts used in vuwthesis don't work right
+%this may need adjusting if changing fonts
+\DeclareCollectionInstance{plainmath}{xfrac}{mathdefault}{math}{
+    numerator-top-sep = -0.5pt,
+    denominator-bot-sep = 0pt,
+    scaling = true, scale-factor =.8,
+    slash-right-mkern = -2.5mu, slash-left-mkern = -1mu,
+    slash-symbol={\divslash} %doesn't seem to do anything
+}
+
+\UseCollection{xfrac}{plainmath}
+
+%-------------------------Theorems--------------------------------
+%set up theorems, numbered by chapter
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem*{claim}{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+
+
+%-------------------------Macros--------------------------------
+%declare new commands
+\DeclareMathOperator{\col}{col_g} %colouring number
+\newcommand{\ba}{\backslash}
+
+%===========================Document===================================
+
+%\includeonly{thesis-introduction.tex}
+\begin{document}
+%swap phis
+    \let\temp\phi
+    \let\phi\varphi
+    \let\varphi\temp
+%----------------Front Matter--------------------
+    \vuwfrontmatter
+
+    \title{TITLE GOES HERE}
+    \author{AUTHOR}
+    \subject{Mathematics}
+
+    \maketitle
+
+    \include{thesis-abstract}
+
+    \include{thesis-acknowledge}
+
+    \tableofcontents
+
+
+%----------------Main Matter--------------------
+    \vuwmainmatter
+
+% individual chapters included here
+
+    \include{thesis-introduction}
+    \include{thesis-lipsum}
+    \include{thesis-conclusion}
+
+
+%----------------Back Matter--------------------
+    \vuwbackmatter
+
+    \printbibliography
+
+\end{document}

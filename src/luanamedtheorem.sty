@@ -1,0 +1,69 @@
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{luanamedtheorem}
+[2021/06/01 (Matthew Askes) Adds a new named theorem type, with support for cleaverref]
+
+
+\RequirePackage{amsthm} % for defining theorems and proofs
+\RequirePackage{luacode}
+\RequirePackage{xparse}
+\RequirePackage[noabbrev,sort]{cleveref} % Allows refrencing as: \cref{aa} -> Theorem 2.4 rather than \ref{aa} -> 2.4.  MUST BE LOADED AFTER HYPERREF
+
+\RequirePackage{iftex}
+%throw error if not using LuaTex
+\ifluatex
+\else
+    \PackageError{luanamedtheorem}{Requires LuaTex}{Please compile with luatex}
+    \endinput
+\fi
+
+%-------------------------Named Theorem--------------------------------
+\theoremstyle{plain}
+\newtheorem*{namedthm}{\namedthmname}
+\newcounter{namedthm}
+\begin{luacode}
+    thesis = {} -- create table to store global variables
+    thesis.namedThmNames = {} --add new global variable called namedThmNames
+\end{luacode}
+%
+\makeatletter
+% \begin{namedtheorem}{<Display Name>}{<Reference Name>}[<Optional extra info>]
+\NewDocumentEnvironment{namedtheorem} { m m o }%
+{
+    \newcommand{\namedthmname} {#1\IfValueT {#3} {\textnormal{~(#3)}}}% set the displayed theorem name (with optional argument)
+    \refstepcounter{namedthm}%
+    \namedthm% Start theorem
+    \renewcommand{\@currentlabel}{#2}% intercept the call for the counter and return the theorem name
+    \luaexec{%}{%
+        thesis.namedThmNames[\luastring{\thenamedthm}] = \luastring{#2}%store the theorem name
+    }
+    }
+    {\endnamedthm}
+\makeatother
+%
+\NewDocumentCommand \printThmName { m }{%
+    \luaexec{%}{%
+        name = thesis.namedThmNames[\luastring{#1}]%
+        tex.sprint(name)%print the theorem name
+    }%
+}
+\NewDocumentCommand \printThmNameUpper { m } {% prints the name and converts the first character to upper case
+    \luaexec{%}{%
+        name = thesis.namedThmNames[\luastring{#1}]%
+        uppername = string.upper(string.sub(name, 1,1)) .. string.sub(name, 2,string.len(name))%
+        tex.sprint(uppername)% print the theorem name
+    }%
+}
+
+%--------------cref formatting------------------------------
+%\newcommand{\crefrangeconjunction}{--}
+%\newcommand{\creflastconjunction}{, }
+\newcommand{\crefmiddlegroupconjunction}{; }
+\newcommand{\creflastgroupconjunction}{; and~}
+
+\crefformat{namedthm}{#2\printThmName{#1}#3}
+\Crefformat{namedthm}{#2\printThmNameUpper{#1}#3}
+\crefmultiformat{namedthm}{#2\printThmName{#1}#3}%
+{\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
+\Crefmultiformat{namedthm}{#2\printThmNameUpper{#1}#3}%
+{\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
