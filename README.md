@@ -7,7 +7,6 @@ This includes a vuwthesis class, a luanamedtheorem package, and a latex template
 This is the class the styles the document. Uses `unicode-math`, so please take a look at the [package documentation](https://ctan.org/pkg/unicode-math).
 
 Package options are:
-
 * font size
   * 10pt
   * 11pt
@@ -41,9 +40,9 @@ Package options are:
  
  `\begin{namedtheorem}{aaa}{Aaa}[bb] \label{aaa}
  Contents.
- \end{namedtheorem}` will be set as 
+ \end{namedtheorem}` will be typeset as a theorem with the name aaa. The second mandatory option is the reference name.  
  
- **aaa** (bb). Contents.
+ **aaa** (bbb). Contents.
  
  And referenced with `\ref{aaa}` gives Aaa.
  
