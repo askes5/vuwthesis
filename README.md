@@ -1,10 +1,11 @@
 # vuwthesis
-A latex class for styling a vuw masters and phd thesis
+A latex class for styling a vuw masters and phd thesis. Requires LuaTex or XeTex.
 
 This includes a vuwthesis class, a luanamedtheorem package, and a latex template.
 
 ## vuwthesis class
-This is the class the styles the document. 
+This is the class the styles the document. Uses `unicode-math`, so please take a look at the package documentation.
+
 Package options are:
 
 * font size
