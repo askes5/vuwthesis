@@ -8,24 +8,24 @@ This is the class the styles the document. Uses `unicode-math`, so please take a
 
 Package options are:
 * font size
-  * 10pt
-  * 11pt
+  * `10pt`
+  * `11pt`
 
 * page type
-  * oneside
-  * twoside
+  * `oneside`
+  * `twoside`
 
 * font
-  * stix
-  * libertinus
-  * newcomputermodern (the default)
+  * `stix`
+  * `libertinus`
+  * `newcomputermodern` (the default)
 
 * specify degree
-  * phd
-  * mscwithhonours
-  * mscthesisonly
-  * mscbothparts
-  * otherdegree=[Value]
+  * `phd`
+  * `mscwithhonours`
+  * `mscthesisonly`
+  * `mscbothparts`
+  * `otherdegree=<Value>`
   
  Use `\title{}` to specify title,
      `\author{}` to specify author,
