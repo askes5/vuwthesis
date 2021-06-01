@@ -1,5 +1,5 @@
 # vuwthesis
-A latex class for styling a vuw masters and phd thesis. Requires LuaTex or XeTex.
+A latex class and associated packages for styling and creating a vuw masters and PhD thesis. Requires LuaTex or XeTex.
 
 This includes a vuwthesis class, a luanamedtheorem package, and a latex template.
 
