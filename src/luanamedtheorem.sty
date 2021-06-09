@@ -7,7 +7,7 @@
 \RequirePackage{amsthm} % for defining theorems and proofs
 \RequirePackage{luacode}
 \RequirePackage{xparse}
-\RequirePackage[noabbrev,sort]{cleveref} % Allows refrencing as: \cref{aa} -> Theorem 2.4 rather than \ref{aa} -> 2.4.  MUST BE LOADED AFTER HYPERREF
+%\RequirePackage[noabbrev,sort]{cleveref} % Allows refrencing as: \cref{aa} -> Theorem 2.4 rather than \ref{aa} -> 2.4.  MUST BE LOADED AFTER HYPERREF
 
 \RequirePackage{iftex}
 %throw error if not using LuaTex
@@ -37,8 +37,8 @@
     \luaexec{%}{%
         thesis.namedThmNames[\luastring{\thenamedthm}] = \luastring{#2}%store the theorem name
     }
-    }
-    {\endnamedthm}
+}
+{\endnamedthm}
 \makeatother
 %
 \NewDocumentCommand \printThmName { m }{%
@@ -56,14 +56,18 @@
 }
 
 %--------------cref formatting------------------------------
-%\newcommand{\crefrangeconjunction}{--}
-%\newcommand{\creflastconjunction}{, }
-\newcommand{\crefmiddlegroupconjunction}{; }
-\newcommand{\creflastgroupconjunction}{; and~}
+\makeatletter
+\AtBeginDocument{\@ifpackageloaded{cleveref}{
+    %\newcommand{\crefrangeconjunction}{--}
+    %\newcommand{\creflastconjunction}{, }
+    \renewcommand{\crefmiddlegroupconjunction}{; }
+    \renewcommand{\creflastgroupconjunction}{; and~}
 
-\crefformat{namedthm}{#2\printThmName{#1}#3}
-\Crefformat{namedthm}{#2\printThmNameUpper{#1}#3}
-\crefmultiformat{namedthm}{#2\printThmName{#1}#3}%
-{\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
-\Crefmultiformat{namedthm}{#2\printThmNameUpper{#1}#3}%
-{\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
+    \crefformat{namedthm}{#2\printThmName{#1}#3}
+    \Crefformat{namedthm}{#2\printThmNameUpper{#1}#3}
+    \crefmultiformat{namedthm}{#2\printThmName{#1}#3}%
+    {\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
+    \Crefmultiformat{namedthm}{#2\printThmNameUpper{#1}#3}%
+    {\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
+}{}}
+\makeatother
