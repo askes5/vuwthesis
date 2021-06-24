@@ -57,17 +57,19 @@
 
 %--------------cref formatting------------------------------
 \makeatletter
-\AtBeginDocument{\@ifpackageloaded{cleveref}{
-    %\newcommand{\crefrangeconjunction}{--}
-    %\newcommand{\creflastconjunction}{, }
-    \renewcommand{\crefmiddlegroupconjunction}{; }
-    \renewcommand{\creflastgroupconjunction}{; and~}
+\AtBeginDocument{
+    \@ifpackageloaded{cleveref}{
+        %\newcommand{\crefrangeconjunction}{--}
+        %\newcommand{\creflastconjunction}{, }
+        \newcommand{\crefmiddlegroupconjunction}{; }
+        \newcommand{\creflastgroupconjunction}{; and~}
 
-    \crefformat{namedthm}{#2\printThmName{#1}#3}
-    \Crefformat{namedthm}{#2\printThmNameUpper{#1}#3}
-    \crefmultiformat{namedthm}{#2\printThmName{#1}#3}%
-    {\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
-    \Crefmultiformat{namedthm}{#2\printThmNameUpper{#1}#3}%
-    {\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
-}{}}
+        \crefformat{namedthm}{#2\printThmName{#1}#3}
+        \Crefformat{namedthm}{#2\printThmNameUpper{#1}#3}
+        \crefmultiformat{namedthm}{#2\printThmName{#1}#3}%
+        {\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
+        \Crefmultiformat{namedthm}{#2\printThmNameUpper{#1}#3}%
+        {\crefpairconjunction#2\printThmName{#1}#3}{\crefmiddleconjunction#2\printThmName{#1}#3}{\creflastconjunction#2\printThmName{#1}#3}%
+    }{}
+}
 \makeatother
