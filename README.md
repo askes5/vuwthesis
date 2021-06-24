@@ -36,11 +36,11 @@ Package options are:
  use `\maketitle` AFTER everything has been specified.
  
  ## luanamedtheorem
- This adds a special theorem enviroment called namedtheorem. This package requires luatex. 
+ This adds a special theorem enviroment called namedtheorem. This package requires luatex. This supports the `cleveref` package, and must be load before this package.
  
  `\begin{namedtheorem}{aaa}{Aaa}[bb] \label{aaa}
  Contents.
- \end{namedtheorem}` will be typeset as a theorem with the name aaa. The second mandatory option is the reference name.  
+ \end{namedtheorem}` will be typeset as a theorem with the name aaa. The second mandatory option is the reference name. For example: 
  
  **aaa** (bbb). Contents.
  
