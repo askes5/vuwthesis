@@ -6,6 +6,8 @@ This includes a vuwthesis class, a luanamedtheorem package, and a latex template
 ## vuwthesis class
 This is the class the styles the document. Uses `unicode-math`, so please take a look at the [package documentation](https://ctan.org/pkg/unicode-math).
 
+A template demonstating this classes use can be found in the src folder.
+
 Package options are:
 * font size
   * `10pt`
