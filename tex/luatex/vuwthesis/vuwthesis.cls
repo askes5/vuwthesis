@@ -184,7 +184,7 @@
     \geometry{hmarginratio={1:1}}
 \fi
 
-\usepackage{parskip} %make paragraphs be seperated by whitespace, not tabs
+\RequirePackage{parskip} %make paragraphs be seperated by whitespace, not tabs
 
 %---------------------headers and footers-----------------------------
 \RequirePackage {fancyhdr} % fancy headers (special pagestyle, allows editing page style)
