@@ -39,10 +39,13 @@ Package options are:
  
  ## luanamedtheorem
  This adds a special theorem enviroment called namedtheorem. This package requires luatex. This supports the `cleveref` package, and must be load before this package.
+
+###Usage
+`\begin{namedtheorem}{<Display Name>}{<Reference Name>}[<Optional extra info>]`
  
- `\begin{namedtheorem}{aaa}{Aaa}[bb] \label{aaa}
+ For example, `\begin{namedtheorem}{aaa}{Aaa}[bb] \label{aaa}
  Contents.
- \end{namedtheorem}` will be typeset as a theorem with the name aaa. The second mandatory option is the reference name. For example: 
+ \end{namedtheorem}` will be typeset as a theorem with the name aaa. The second mandatory option is the reference name. Displayed as: 
  
  **aaa** (bbb). Contents.
  
