@@ -41,29 +41,27 @@
     thesis.namedThmNames = {} --add new global variable called namedThmNames
 \end{luacode}
 %
-\makeatletter
 % \begin{namedtheorem}{<Display Name>}{<Reference Name>}[<Optional extra info>]
 \NewDocumentEnvironment{namedtheorem} { m m o }%
 {
     \newcommand{\namedthmname} {#1\IfValueT {#3} {\textnormal{~(#3)}}}% set the displayed theorem name (with optional argument)
     \refstepcounter{namedthm}%
     \namedthm% Start theorem
-    \renewcommand{\@currentlabel}{#2}% intercept the call for the counter and return the theorem name
+    \renewcommand{\@currentlabel}{#2}% intercept the call for the counter and return the theorem name (only relevent for \ref command)
     \luaexec{%}{%
         thesis.namedThmNames[\luastring{\thenamedthm}] = \luastring{#2}%store the theorem name
     }
 }
 {\endnamedthm}
-\makeatother
 %
 \NewDocumentCommand \printThmName { m }{%
-    \luaexec{%}{%
+    \luadirect{%
         name = thesis.namedThmNames[\luastring{#1}]%
         tex.sprint(name)%print the theorem name
     }%
 }
 \NewDocumentCommand \printThmNameUpper { m } {% prints the name and converts the first character to upper case
-    \luaexec{%}{%
+    \luadirect{%
         name = thesis.namedThmNames[\luastring{#1}]%
         uppername = string.upper(string.sub(name, 1,1)) .. string.sub(name, 2,string.len(name))%
         tex.sprint(uppername)% print the theorem name

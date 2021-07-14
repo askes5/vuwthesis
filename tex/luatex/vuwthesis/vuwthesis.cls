@@ -251,6 +251,7 @@
     \RequirePackage[scale=MatchLowercase, nomap]{FiraMono}
     \setmathfont[range= {tt}]{Fira Math}[Scale=MatchLowercase] %change the tt style to match fira mono
     \setmathfont[range={bb}]{NewCMMath-Book.otf}
+    \setmathfont[range={cal, bfcal, scr,bfscr},StylisticSet=1]{STIXTwoMath-Regular.otf}
 \fi
 
 \ifvuw@newcomputermodern
