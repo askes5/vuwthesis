@@ -8,6 +8,8 @@ This is the class the styles the document. Uses `unicode-math`, so please take a
 
 A template demonstating this classes use can be found in the src folder.
 
+If you get a font error ensure you have all the nessary fonts installed. You will need `firamath` and `fira` for sans-serif and mono fonts. `stix2-otf`, `libertinus-otf`, or  `NewComputerModern` for serif fonts (depends on package options).
+
 Package options are:
 * font size
   * `10pt`
