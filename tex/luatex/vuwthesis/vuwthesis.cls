@@ -349,7 +349,7 @@
         \parbox{100mm}{
             \center
             A thesis\\
-            submitted to the Victoria University of Wellington\\
+            submitted to Victoria University of Wellington\\
             in \vuw@ffil\ of the
             requirements for the degree of\\
             \vuw@degree \\
