@@ -67,6 +67,16 @@
         tex.sprint(uppername)% print the theorem name
     }%
 }
+%--------------Restate theorem------------------------------
+
+%\NewDocumentCommand{\restatetheorem}{ m +m }{
+%    \def\namedthmname {\cref{#1}}% set the displayed theorem name (with optional argument)
+%    \refstepcounter{namedthm}%
+%    \namedthm% Start theorem
+%    #2
+%    \endnamedthm
+%}
+
 
 %--------------cref formatting------------------------------
 \makeatletter
