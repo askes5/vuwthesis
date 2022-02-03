@@ -42,7 +42,7 @@ Package options are:
  ## luanamedtheorem
  This adds a special theorem enviroment called namedtheorem. This package requires luatex. This supports the `cleveref` package, and must be load before this package.
 
-###Usage
+### Usage
 `\begin{namedtheorem}{<Display Name>}{<Reference Name>}[<Optional extra info>]`
  
  For example, `\begin{namedtheorem}{aaa}{Aaa}[bb] \label{aaa}
